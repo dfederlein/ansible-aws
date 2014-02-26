@@ -30,8 +30,8 @@ vpc_group:
 
 vpc_instances:
   - instance_type: m1.medium
-    image: ami-9c78c0f5
-    keypair: anstest
+    image: 
+    keypair: 
     group: dev_vpc
     instance_tags: 
         Name: dev_db
@@ -41,8 +41,8 @@ vpc_instances:
     subnet: 10.0.3.0/24
 
   - instance_type: m1.medium
-    image: ami-9c78c0f5
-    keypair: anstest
+    image: 
+    keypair: 
     group: dev_vpc
     instance_tags: 
         Name: dev_app
@@ -52,8 +52,8 @@ vpc_instances:
     subnet: 10.0.2.0/24
 
   - instance_type: m1.medium
-    image: ami-9c78c0f5
-    keypair: anstest
+    image: 
+    keypair: 
     group: dev_proxy
     instance_tags: 
         Name: dev_proxy
