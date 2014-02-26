@@ -1,0 +1,92 @@
+###VPC Below
+subnets_hash:
+    name: dev
+vpc_cidr_block: 10.0.0.0/16
+vpc_subnets:
+    - cidr: 10.0.1.0/24
+      az: us-east-1a
+    - cidr: 10.0.2.0/24
+      az: us-east-1b
+vpc_internet_gateway: "yes"
+vpc_route_tables:
+    - subnets:
+       - 10.0.1.0/24
+      routes:
+       - dest: 0.0.0.0/0
+         gw: igw
+vpc_public_subnet: 10.0.1.0/24
+vpc_nat_instance_id: 
+vpc_nat_instance_type: 
+vpc_group:
+    name: 
+    desc: the security group 
+    rules:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+
+# VPC Instances:
+
+vpc_instances:
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_vpc
+    instance_tags: 
+        Name: dev_db
+    count: 1
+    subnet: 10.0.1.0/24
+
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_vpc
+    instance_tags: 
+        Name: dev_app
+    count: 2
+    subnet: 10.0.1.0/24
+
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_proxy
+    instance_tags: 
+        Name: dev_proxy
+    count: 1
+    subnet: 10.0.1.0/24
+
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_vpc
+    instance_tags: 
+        Name: dev_db
+    count: 1
+    subnet: 10.0.2.0/24
+
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_vpc
+    instance_tags: 
+        Name: dev_app
+    count: 2
+    subnet: 10.0.2.0/24
+
+  - instance_type: 
+    image: 
+    keypair: 
+    group: dev_proxy
+    instance_tags: 
+        Name: dev_proxy
+    count: 1
+    subnet: 10.0.2.0/24
