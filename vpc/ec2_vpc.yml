@@ -45,9 +45,12 @@
       wait: true
       instance_tags: 
         Name: "{{ environ|default('dev') + '_nat_instance' }}"
+<<<<<<< HEAD
       #exact_count: 1
       #count_tag: 
         #Name: "{{ environ|default('dev') + '_nat_instance' }}"
+=======
+>>>>>>> FETCH_HEAD
     register: ec2
     with_items: vpc.subnets
     when: vpc_internet_gateway and item['cidr'] == vpc_public_subnet
